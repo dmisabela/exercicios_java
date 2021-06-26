@@ -27,17 +27,17 @@ public class Program {
 	public static void main(String[] args) {
 		
 		
-		Locale.setDefault(Locale.US);
-		
+		Locale.setDefault(Locale.US);		
 		Scanner sc  = new Scanner(System.in);
+		
+		Banco banco; //declara antes
 		
 		System.out.println("Entre com o número da conta: ");
 		int conta = sc.nextInt();
 		
 		System.out.println("Qual seu nome completo?: ");
 		String nome = sc.next();		
-		
-		Banco banco = new Banco(conta, nome);	
+	
 				
 		System.out.println("Você irá fazer um depósito inicial? (S/N) ");
 		char opcao = sc.next().charAt(0);
@@ -45,33 +45,27 @@ public class Program {
 		
 		if (opcao == 'S') {
 			System.out.println("Qual valor do depósito?: ");
-			double saldo = sc.nextDouble();	
-			banco.depositarValor(saldo);
+			double depositoInicial = sc.nextDouble();	
+			banco = new Banco(conta, nome, depositoInicial); //sobrecarga	
 		}	
+		
+		else {
+			banco = new Banco(conta, nome); //sobrecarga	
+		}
 				
-		System.out.println("Dados: " 
-		+ "Conta: " + banco.getConta()
-		+ ", Titular: " + banco.getName()
-		+ ", Saldo: " + banco.getSaldo());
+		System.out.println("Dados: " + banco);
 		
 		System.out.println("Entre com um valor para depósito: ");
 		double deposito = sc.nextDouble();	
 		banco.depositarValor(deposito);
 		
-		System.out.println("Dados atualizados: " 
-				+ "Conta: " + banco.getConta()
-				+ ", Titular: " + banco.getName()
-				+ ", Saldo: " + banco.getSaldo());	
+		System.out.println("Dados atualizados: " + banco);
 		
 		System.out.println("Entre com um valor para saque: ");
 		double saque = sc.nextDouble();	
 		banco.sacarValor(saque);
 		
-		System.out.println("Dados atualizados: " 
-				+ "Conta: " + banco.getConta()
-				+ ", Titular: " + banco.getName()
-				+ ", Saldo: " + banco.getSaldo());	
-		
+		System.out.println("Dados atualizados: " + banco);		
 		
 		sc.close();
 

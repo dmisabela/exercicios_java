@@ -14,10 +14,10 @@ public class Banco {
 		this.name = name;
 	}
 
-	public Banco(int conta, String name, double saldo) {
+	public Banco(int conta, String name, double depositoInicial) {
 		this.conta = conta;
 		this.name = name;
-		this.saldo = saldo;
+		depositarValor(depositoInicial); //para melhor manutenção caso mude depois 
 	}
 	
 		//get and setters
@@ -49,6 +49,18 @@ public class Banco {
 		return saldo-= (saque + taxa);
 	}
 	
+	//dados
+	
+	public String toString() {
+		
+		String Dados = (
+				"Conta: " + conta
+				+ ", Titular: " + name
+				+ ", Saldo: R$" + saldo);
+		
+		return Dados; 
+		
+	} 
 	
 
 }
