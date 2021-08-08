@@ -1,4 +1,4 @@
-package heranca_polimorfismo;
+package heranca_polimorfismo_ex1;
 
 import java.util.Date;
 
